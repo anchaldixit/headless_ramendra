@@ -12,6 +12,7 @@ import SessionsSection from "@/components/SessionsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
+export const dynamic = "force-dynamic";
 import { fetchGraphQL } from "@/lib/wpgraphql";
 
 export default function HomePage() {
