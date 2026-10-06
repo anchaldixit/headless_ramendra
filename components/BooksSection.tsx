@@ -105,7 +105,7 @@ export default function BooksSection() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-[150px]">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {bookData?.publishedBooks?.map((book) => (
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-6">
                 <div className="aspect-[275/425] border border-[#eeebeb] overflow-hidden">
                   <a href={book.bookUrl || "#"} target="_blank" rel="noopener noreferrer">
                     {book.bookImage?.node?.sourceUrl && (
