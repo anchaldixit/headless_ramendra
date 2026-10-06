@@ -49,7 +49,7 @@ const leftStats = [
     text: (
       <>
         <strong className="text-[#087984]">1.5 million+</strong>
-        {" copies through the National Book Trust....."}
+        {" copies through the National Book Trust"}
       </>
     ),
   },
