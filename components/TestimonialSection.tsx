@@ -54,14 +54,15 @@ export const GET_TESTIMONIAL_SECTION_DATA = `
   }
 `;
 
-const data = await fetchGraphQL<TestimonialSectionResponse>(
-  GET_TESTIMONIAL_SECTION_DATA
-);
 
-const testimonialSections =
-  data.page?.homapageFieldValue?.homepageHeroSectionFieldValue;
 
-export default function TestimonialSection() {
+export default async function TestimonialSection() {
+  const data = await fetchGraphQL<TestimonialSectionResponse>(
+    GET_TESTIMONIAL_SECTION_DATA
+  );
+
+  const testimonialSections = data.page?.homapageFieldValue?.homepageHeroSectionFieldValue;
+
   return (
     <section className="bg-[#fffdf8] w-full py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-[150px]">

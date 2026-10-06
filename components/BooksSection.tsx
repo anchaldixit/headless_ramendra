@@ -56,14 +56,16 @@ export const GET_BOOK_DATA = `
   }
 `;
 
-const data = await fetchGraphQL<BookSectionResponse>(
+
+
+export default async function BooksSection() {
+
+  const data = await fetchGraphQL<BookSectionResponse>(
   GET_BOOK_DATA
-);
+  );
 
-const bookData =
-  data.page?.homapageFieldValue?.homepageBookSectionFieldValue;
+  const bookData = data.page?.homapageFieldValue?.homepageBookSectionFieldValue;
 
-export default function BooksSection() {
   return (
     <section id="books" className="w-full">
       {/* Yellow background header area */}

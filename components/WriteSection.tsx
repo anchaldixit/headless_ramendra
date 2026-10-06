@@ -61,15 +61,17 @@ export const GET_WRITE_SECTION_DATA = `
   }
 `;
 
-const data = await fetchGraphQL<WriteSectionResponse>(
-  GET_WRITE_SECTION_DATA
-);
-
-const writeSection =
-  data.page?.homapageFieldValue?.homepageHeroSectionFieldValue;
 
 
-export default function WriteSection() {
+
+export default async function WriteSection() {
+
+  const data = await fetchGraphQL<WriteSectionResponse>(
+    GET_WRITE_SECTION_DATA
+  );
+
+  const writeSection = data.page?.homapageFieldValue?.homepageHeroSectionFieldValue;
+
   return (
     <section className="bg-[#ffe0a6] w-full py-12 lg:py-16">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-[150px]">

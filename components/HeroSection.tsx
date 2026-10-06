@@ -42,7 +42,7 @@ const reviewBooks = booksData.posts.edges.map(
 
 
 
-export default function HeroSection() {
+export default async function HeroSection() {
   return (
     <section className="bg-[#ffe0a6] w-full">
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[640px]">
