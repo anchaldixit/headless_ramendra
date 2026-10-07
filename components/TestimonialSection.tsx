@@ -1,4 +1,5 @@
 import { fetchGraphQL } from "@/lib/wpgraphql";
+import BookVideoPopup from "@/components/BookVideoPopup";
 
 export type TestimonialSectionResponse = {
   page: {
@@ -8,9 +9,11 @@ export type TestimonialSectionResponse = {
         featuredBookAuthorName: string | null;
         featuredBookCategory: string | null;
         featuredBookShortDetails: string | null;
+
         featuredBookVideo: {
           node: {
-            sourceUrl: string;
+            file: string;
+            filePath: string;
           } | null;
         } | null;
 
@@ -20,8 +23,6 @@ export type TestimonialSectionResponse = {
             altText: string | null;
           } | null;
         } | null;
-
-
       } | null;
     } | null;
   } | null;
@@ -36,9 +37,11 @@ export const GET_TESTIMONIAL_SECTION_DATA = `
           featuredBookAuthorName
           featuredBookCategory
           featuredBookShortDetails
+
           featuredBookVideo {
             node {
-              sourceUrl
+              file
+              filePath
             }
           }
 
@@ -54,14 +57,30 @@ export const GET_TESTIMONIAL_SECTION_DATA = `
   }
 `;
 
-
-
 export default async function TestimonialSection() {
   const data = await fetchGraphQL<TestimonialSectionResponse>(
     GET_TESTIMONIAL_SECTION_DATA
   );
 
-  const testimonialSections = data.page?.homapageFieldValue?.homepageHeroSectionFieldValue;
+  const testimonialSections =
+    data.page?.homapageFieldValue?.homepageHeroSectionFieldValue;
+
+  /**
+   * WordPress uploaded video URL
+   */
+  const videoPath =
+    testimonialSections?.featuredBookVideo?.node?.filePath;
+
+  const videoUrl = videoPath
+    ? `https://orchid-otter-153984.hostingersite.com${videoPath}`
+    : "";
+
+  /**
+   * Book thumbnail
+   */
+  const thumbnailUrl =
+    testimonialSections?.featuredBookThumbnail?.node?.sourceUrl ||
+    "/assets/f2b64.png";
 
   return (
     <section className="bg-[#fffdf8] w-full py-16 lg:py-24">
@@ -92,16 +111,32 @@ export default async function TestimonialSection() {
             </div>
           </div>
 
-          {/* Book image */}
-           <div className="lg:flex-1 flex justify-center lg:justify-end">
-            <div className="w-[276px] h-[389px] overflow-hidden shrink-0">
-              <img
-                src={testimonialSections?.featuredBookThumbnail?.node?.sourceUrl || "/assets/f2b64.png"}
-                alt={testimonialSections?.featuredBookThumbnail?.node?.altText || "Book by Ramendra Kumar"} 
-                className="w-full h-full object-cover"
+          {/* Video / Book Image */}
+          <div className="lg:flex-1 flex justify-center lg:justify-end">
+
+            {videoUrl ? (
+              <BookVideoPopup
+                videoUrl={videoUrl}
+                    thumbnailUrl={thumbnailUrl}
+                    altText={
+                      testimonialSections?.featuredBookThumbnail?.node
+                        ?.altText || "Book by Ramendra Kumar"
+                    }
               />
-            </div>
-          </div> 
+            ) : (
+              <div className="w-[276px] h-[389px] overflow-hidden shrink-0">
+                <img
+                  src={thumbnailUrl}
+                  alt={
+                    testimonialSections?.featuredBookThumbnail?.node
+                      ?.altText || "Book by Ramendra Kumar"
+                  }
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+
+          </div>
 
         </div>
       </div>
