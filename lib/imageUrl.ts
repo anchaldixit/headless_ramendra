@@ -3,7 +3,7 @@ const WORDPRESS_URL =
 
 const NEXT_PUBLIC_URL =
   process.env.NEXT_PUBLIC_URL ||
-  "http://localhost:3000/";
+  "https://steelblue-armadillo-647332.hostingersite.com";
 
 export function getImageUrl(url?: string | null) {
   if (!url) return "";
