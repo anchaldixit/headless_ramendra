@@ -3,7 +3,7 @@ const WORDPRESS_URL =
 
 const NEXT_PUBLIC_URL =
   process.env.NEXT_PUBLIC_URL ||
-  "https://steelblue-armadillo-647332.hostingersite.com";
+  "https://steelblue-armadillo-647332.hostingersite.com"; // Fallback to localhost if NEXT_PUBLIC_URL is not defined
 
 export function getImageUrl(url?: string | null) {
   if (!url) return "";

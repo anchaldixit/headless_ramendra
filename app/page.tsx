@@ -14,11 +14,8 @@ import Footer from "@/components/Footer";
 
 export const dynamic = "force-dynamic";
 import { fetchGraphQL } from "@/lib/wpgraphql";
-
-
-
-
 import type { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Ramendra Kumar | Writer, Storyteller & Speaker",
