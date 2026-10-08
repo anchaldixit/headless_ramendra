@@ -1,5 +1,6 @@
 import { fetchGraphQL } from "@/lib/wpgraphql";
 import BookVideoPopup from "@/components/BookVideoPopup";
+import { getImageUrl } from "@/lib/imageUrl";
 
 export type TestimonialSectionResponse = {
   page: {
@@ -79,8 +80,8 @@ export default async function TestimonialSection() {
    * Book thumbnail
    */
   const thumbnailUrl =
-    testimonialSections?.featuredBookThumbnail?.node?.sourceUrl ||
-    "/assets/f2b64.png";
+    getImageUrl(testimonialSections?.featuredBookThumbnail?.node?.sourceUrl ||
+    "/assets/f2b64.png");
 
   return (
     <section className="bg-[#fffdf8] w-full py-16 lg:py-24">

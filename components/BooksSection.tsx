@@ -2,6 +2,7 @@
 import { fetchGraphQL } from "@/lib/wpgraphql";
 import { GET_STATS_BAR_DATA, StateBarSectionResponse } from "./StatsBar";
 import Image from "next/image";
+import { getImageUrl } from "@/lib/imageUrl";
 
 export type BookSectionResponse = {
   page: {
@@ -111,7 +112,7 @@ export default async function BooksSection() {
                 <div className="aspect-[275/425] border border-[#eeebeb] overflow-hidden">
                   <a href={book.bookUrl || "#"} target="_blank" rel="noopener noreferrer">
                     {book.bookImage?.node?.sourceUrl && (
-                      <img src={book.bookImage.node.sourceUrl}
+                      <img src={getImageUrl(book.bookImage.node.sourceUrl)}
                         alt={
                           book.bookImage.node.altText ||
                           book.bookName ||

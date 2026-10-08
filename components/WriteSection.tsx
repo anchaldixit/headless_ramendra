@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { fetchGraphQL } from "@/lib/wpgraphql";
 import type { Metadata } from "next";
-
+import { getImageUrl } from "@/lib/imageUrl";
 
 export type WriteSectionResponse = {
   page: {
@@ -82,9 +82,15 @@ export default async function WriteSection() {
           {/* Autograph */}
           <div className="border border-[#c7c5c5] w-[237px] h-[237px] shrink-0 overflow-hidden">
             {writeSection?.writeFeaturedImage?.node && (
-              <img
-                className="w-full h-full object-cover"
-                src={writeSection.writeFeaturedImage.node.sourceUrl}
+              // <img
+              //   className="w-full h-full object-cover"
+              //   src={writeSection.writeFeaturedImage.node.sourceUrl}
+              //   alt={writeSection.writeFeaturedImage.node.altText}
+              // />
+              <img  className="w-full h-full object-cover"
+                src={getImageUrl(
+                  writeSection.writeFeaturedImage.node.sourceUrl
+                )}
                 alt={writeSection.writeFeaturedImage.node.altText}
               />
             )}

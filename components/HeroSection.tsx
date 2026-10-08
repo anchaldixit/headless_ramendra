@@ -2,7 +2,7 @@ import Link from "next/link";
 import { fetchGraphQL } from "@/lib/wpgraphql";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
+import { getImageUrl } from "@/lib/imageUrl";
 // Hero section — "Meet Ramen." intro; text is ready for WordPress/GraphQL CMS data
 
 export type HeroSectionResponse = {
@@ -62,10 +62,11 @@ export default async function HeroSection() {
         <div className="relative lg:w-1/2 shrink-0">
           <div className="relative w-full h-[420px] lg:h-[639px] overflow-hidden">
              <img
-                src={heroSections?.heroSectionImage?.node?.sourceUrl || "/assets/f2b64.png"}
+                src={getImageUrl(heroSections?.heroSectionImage?.node?.sourceUrl || "/assets/f2b64.png")}
                 alt={heroSections?.heroSectionImage?.node?.altText || "Book by Ramendra Kumar"} 
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
+
           </div>
           {/* Caption label */}
           <div className="bg-[#103f4b] px-5 py-3 inline-block">

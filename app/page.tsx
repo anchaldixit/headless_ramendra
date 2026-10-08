@@ -15,6 +15,32 @@ import Footer from "@/components/Footer";
 export const dynamic = "force-dynamic";
 import { fetchGraphQL } from "@/lib/wpgraphql";
 
+
+
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ramendra Kumar | Writer, Storyteller & Speaker",
+
+  description:
+    "Meet Ramendra Kumar, an award-winning writer, storyteller and speaker.",
+
+  openGraph: {
+    title: "Ramendra Kumar | Writer, Storyteller & Speaker",
+    description:
+      "Meet Ramendra Kumar, an award-winning writer, storyteller and speaker.",
+    images: [
+      {
+        url: "Ramender.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ramendra Kumar",
+      },
+    ],
+  },
+};
+
 export default function HomePage() {
   return (
     <div className="w-full min-h-screen">

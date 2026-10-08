@@ -78,7 +78,7 @@ export default function Footer() {
           <p className="font-sans font-normal text-[#c6c3c3] text-[18px]">© 2026 Ramendra Kumar</p>
           <p className="font-sans font-normal text-[#c6c3c3] text-[18px]">
             Web Design &amp; Development{" "}
-            <a href="#" className="underline hover:text-white transition-colors">
+            <a href="http://atwozsites.com/" target="_black" className="underline hover:text-white transition-colors">
               a2z Sites
             </a>
           </p>
